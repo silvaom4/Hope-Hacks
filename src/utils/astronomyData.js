@@ -1,7 +1,7 @@
 //based on the date the user input ex (2023-12-21), gives you the info of that date aka
 // date, title, bio, img
 
-const astronomyData = (date) => {
+const astronomyData = (date, callback ) => {
     const url = 'https://api.nasa.gov/planetary/apod?api_key=QOeP5NpXEklQLQfszDMeP3SXy72Y1iV8b5bAhe3G&date=' + date;
     const options = {
         method: 'GET',
@@ -14,12 +14,14 @@ const astronomyData = (date) => {
     return fetch(url, options)
         .then(res => res.json())
         .then(json => {
-            return {
+            const results =  {
                 date: json.date,
                 title: json.title,
                 bio: json.explanation,
                 img: json.url
             };
+
+            callback (undefined , results)
         })
         .catch(err => {
             throw new Error('Error with data')

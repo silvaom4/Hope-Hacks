@@ -1,7 +1,7 @@
 // the user can put their age and it gives them that many pictures
 //We've extracted just the date, title, bio, and img url. 
 //depending what data we want to show in the front end
-const astronomyRandom = (count) => {
+const astronomyRandom = (count , callback) => {
     const url = 'https://api.nasa.gov/planetary/apod?api_key=QOeP5NpXEklQLQfszDMeP3SXy72Y1iV8b5bAhe3G&count=' + count;
     const options = {
         method: 'GET',
@@ -20,9 +20,8 @@ const astronomyRandom = (count) => {
                 bio: item.explanation,
                 img: item.url
             }));
-            return {
-                data
-            };
+            
+            callback(undefined , data)
         })
         .catch(err => {
             throw new Error('Error with data');

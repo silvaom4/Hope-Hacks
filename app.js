@@ -2,6 +2,9 @@ const express = require('express');
 const app = express(); // Thank you Nicole for downloading express
 const port = 5000;
 const path = require('path')
+const astronomyStatic = require('./src/utils/astronomyStatic')
+const astronomyRandom = require('./src/utils/astronomyRandom')
+const astronomyData = require('./src/utils/astronomyData')
 
 
 
@@ -12,6 +15,37 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'templates', 'index.html' ));
 });
+
+app.get('/astronomyDay' , async (req , res) => {
+    try {
+        const astronomy = await astronomyStatic();
+        res.json(astronomy);
+    } catch (error) {
+        res.send('Error')
+    }
+});
+
+app.get ('/astroTest' , (req , res) => {
+  if(!req.query.date) {
+    return res.send('Error has been made')
+  } else {
+      astronomyData( req.query.date , (err,data) => {
+          res.send(data)
+      })
+   }
+
+    
+})
+
+app.get('/randomTest' , (req, res) => {
+    if(!req.query.count) {
+        return res.send('Error has been made')
+      } else {
+          astronomyRandom( req.query.count , (err,data) => {
+              res.send(data)
+          })
+       }
+})
 //This will be the Quiz Style / Image/Video Page
 app.get('/explore', (req, res) => {
     res.sendFile(path.join(__dirname, 'templates', 'explore.html' ));
