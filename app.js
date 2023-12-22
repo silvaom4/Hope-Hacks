@@ -6,9 +6,12 @@ const astronomyStatic = require('./src/utils/astronomyStatic')
 const astronomyRandom = require('./src/utils/astronomyRandom')
 const astronomyData = require('./src/utils/astronomyData')
 
+const templatesPath = path.join(__dirname, 'templates')
+
 
 
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 
 //This will the home page where our astronomy api update will be on the home page 
@@ -35,6 +38,11 @@ app.get ('/astroTest' , (req , res) => {
    }
 
     
+})
+
+app.get('/date', (req, res) => {
+    res.sendFile(path.join(__dirname, 'templates', 'date.html'))
+
 })
 
 app.get('/randomTest' , (req, res) => {
