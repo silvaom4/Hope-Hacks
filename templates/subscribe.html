@@ -1,11 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Subscribe</title>
+    <link href="css/subscribe.css" rel="stylesheet">
 </head>
+
 <body>
-    <h1>Subscribe</h1>
+
+    <section class="cont">
+        <form class="form sign-in" method="post" action="/login">
+            <h2>It's good to have you back traveler!</h2>
+            <label>
+                <span>username</span>
+                <input type="text" autocomplete="username" name="username" required />
+            </label>
+            <label>
+                <span>Password</span>
+                <input type="password" name="password" required />
+            </label>
+            <button type="submit" class="submit" value="login">Sign In</button>
+        </form>
+
+
+        <section class="sub-cont">
+            <section class="img">
+                <section class="img__text m--up">
+                    <h2>New here?</h2>
+                    <p>Sign up and discover amazing space details!</p>
+                </section>
+
+
+                <div class="img__text m--in">
+                    <h2>Fellow astronaut?</h2>
+                    <p>If you already have an account, just sign in. Welcome back to our Space Shuttle!</p>
+                </div>
+
+
+                <section class="img__btn">
+                    <span class="m--up">Sign Up</span>
+                    <span class="m--in">Sign In</span>
+                </section>
+            </section>
+
+
+            <form class="form sign-up" method="post" action="/newAccount">
+                <h2>Join us on an adventure!</h2>
+                <label>
+                    <span>username</span>
+                    <input type="text" name="username" required />
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type="email" name="email" required />
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" name="password" required />
+                </label>
+                <button type="submit" class="submit" value="newAccount">Sign Up</button>
+            </form>
+
+        </section>
+    </section>
+
+    <script src="js/subscribe.js"></script>
 </body>
+
 </html>
