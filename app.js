@@ -5,6 +5,7 @@ const path = require('path')
 const astronomyStatic = require('./src/utils/astronomyStatic')
 const astronomyRandom = require('./src/utils/astronomyRandom')
 const astronomyData = require('./src/utils/astronomyData')
+const database = require('./database')
 
 const templatesPath = path.join(__dirname, 'templates')
 
@@ -12,7 +13,10 @@ const templatesPath = path.join(__dirname, 'templates')
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+//This is used to parse the incoming json data and puts in into the body of the req which
+//we can then access 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 //This will the home page where our astronomy api update will be on the home page 
 app.get('/', (req, res) => {
