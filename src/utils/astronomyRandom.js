@@ -23,9 +23,13 @@ const astronomyRandom = (count , callback) => {
             
             callback(undefined , data)
         })
-        .catch(err => {
-            throw new Error('Error with data');
+
+        .catch(err => { // my attempt 
+            callback('Please check spelling. Try again.', undefined)
         })
+        // .catch(err => { -- our original catch error
+        //     throw new Error('Error with data');
+        // })
 };
 
 module.exports = astronomyRandom;

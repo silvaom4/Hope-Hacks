@@ -1,0 +1,31 @@
+#random-button {
+    background-color: blueviolet;
+}
+
+
+
+#random-ul {
+    display: grid;
+    height: 60%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    text-align: center;
+    /* border: salmon 1px solid; */
+    box-sizing: border-box;
+    overflow: hidden;
+    grid-gap: 10px;
+
+}
+
+.random-img-class{
+    height: 40%;
+    box-sizing: border-box;
+}
+
+
+.random-container {
+    height: 600px;
+    width:70%;
+    padding: 10px;
+    align-items: center;
+}

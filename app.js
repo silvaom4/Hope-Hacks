@@ -49,6 +49,8 @@ app.get('/date', (req, res) => {
 
 })
 
+
+
 app.get('/randomTest', (req, res) => {
     if (!req.query.count) {
         return res.send('Error has been made')
@@ -58,6 +60,21 @@ app.get('/randomTest', (req, res) => {
         })
     }
 })
+
+app.get('/count', (req,res) => {
+
+    try {
+        res.sendFile(path.join(__dirname,'templates','random.html'))
+    }
+    catch {
+         res.send('Error trying to connect') 
+    }
+       
+    
+    
+})
+
+
 //This will be the Quiz Style / Image/Video Page
 app.get('/explore', (req, res) => {
     res.sendFile(path.join(__dirname, 'templates', 'explore.html'));
