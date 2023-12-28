@@ -5,7 +5,7 @@ const path = require('path')
 const astronomyStatic = require('./src/utils/astronomyStatic')
 const astronomyRandom = require('./src/utils/astronomyRandom')
 const astronomyData = require('./src/utils/astronomyData')
-const database = require('./database')
+// const database = require('./database')
 
 const templatesPath = path.join(__dirname, 'templates')
 
