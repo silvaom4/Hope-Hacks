@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const mediaList = document.querySelector('#mediaList');
 
 
-    const fetchData = async (url, options) => {
+    const fetchData = async (url, options) => { // async keyword means that this function is asynchronous and will continue running without blocking the Event Loop
         try {
-          const response = await fetch(url, options);
+          const response = await fetch(url, options);  // this waiting to get the value of the "fetch" and once it has that value it stores it i the response variable
           const data = await response.json();
           return data;
         } catch (error) {
@@ -38,20 +38,50 @@ document.addEventListener('DOMContentLoaded', function() {
                 mediaList.innerHTML = ''; //clear existing content inside the div "medialist". Each time a new fetch is displayed it replaces the existing content 
 
 
-                data.collection.items.forEach((item) => { //Iterates through the data of the API
-                    console.log(item.data);
+                data.collection.items.forEach( async (item) => { //Iterates through the data of the API
+                    const imageArray = item.href; // this handles what I want to get from the API
+                    const media = await fetch(imageArray)
+                     .then( res => res.json())
+                     .then( data => {
+                        const image = data.filter(link => link.endsWith('small.jpg'))  //the filter out smalljpg and video that will show on our frontend
+                        const video = data.filter(link => link.endsWith('.mp4'))
+                        const media = {};
+                        if(image){
+                            media['image']= image[0];
+                        } 
+                        if(video) {
+                            media['video']= video[0];
+                        }
+                        console.log(media)
+                        return media
 
-                    const imageURL = item.links[0].href; // this handles what I want to get from the API
+                     })
+                    // console.log(imageUrl)
                     const title = item.data[0].title;
                     const description = item.data[0].description;
 
-                    const resultDiv = document.createElement('div') //This is creating a new div that will then have all of the elements I want to get from the api
+                    const resultDiv = document.createElement('div')
+                    // resultDiv.classList.add('grid'); //This is creating a new div that will then have all of the elements I want to get from the api
+                    if (media.image) {
+                            resultDiv.innerHTML = `
+                            <div class = "exploreMain"> 
+                                <img src="${media.image}" alt="${title}"> 
+                                <p>${title}</p>
+                                <h5>${description}</h5>
+                            </div>
+                            `;
+                        }
+                    if (media.video) {
+                         resultDiv.innerHTML = ` 
+                         <div class = "exploreMain">
+                                <video width="320" height="240" controls> <source src="${media.video}" type="video/mp4" alt="${title}"></video>
+                                <p>${title}</p>
+                                <h5>${description}</h5>
+                        </div>
+                            `;
+                    }
 
-                    resultDiv.innerHTML = ` 
-                        <img src="${imageURL}" alt="${title}"> 
-                        <p>${title}</p>
-                        <h5>${description}</h5>
-                    `;
+                    
 
                     mediaList.appendChild(resultDiv); //this line appends the resultDiv to the mediaList div. This adds a new div for each result to the HTML.
 
@@ -66,3 +96,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+
+
+const fetchData2 = async (url , options) => {
+    
+    try {
+        const response = await fetch(url , options);
+        const data = await response.json();
+        return data
+    } catch (error) {
+        console.log(err)
+    }
+}
