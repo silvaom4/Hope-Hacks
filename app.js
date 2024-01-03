@@ -63,54 +63,6 @@ app.get('/astroTest', (req, res) => {
 })
 
 
-// app.get('/astroTest', (req, res) => {
-//     if (!req.query.date) {
-//         return res.send('Error has been made')
-//     } 
-//         astronomyData(req.query.date, (err, data) => {
-//             if(err) {
-                
-//                 res.send({err})
-                
-//             }
-//             res.send(data)
-//         })
-
-// })
-// app.get('/astroTest', (req, res) => {
-//     if (!req.query.date) {
-//         return res.send('Error has been made')
-//     } 
-
-// //     astronomyData(req.query.date).then(data => {
-// //         if(data) {
-// //             res.send(data)
-// //         } else {
-// //             return res.send({error: "Try again."})
-// //         }
-// //     })
-// // })
-
-    // astronomyData(req.query.date, (err, data) => {
-    //         if(data) {
-    //             res.send(data)
-    //         } else {
-    //             return res.send({error: "Try again."})
-    //         }
-    //     }
-        // astronomyData(req.query.date, (err, data) => {
-            
-        //         res.send(data)
-           
-        // })
-            //     if(err) {
-        //         return res.send({err})
-        //     }
-        //     res.send(data)
-        // })
-
-
-
 
 app.get('/date', (req, res) => {
     res.sendFile(path.join(__dirname, 'templates', 'date.html'))
