@@ -71,16 +71,6 @@ app.get('/date', (req, res) => {
 
 
 
-// app.get('/randomTest', (req, res) => {
-//     if (!req.query.count) {
-//         return res.send('Error has been made')
-//     } else {
-//         astronomyRandom(req.query.count, (err, data) => {
-//             res.send(data)
-//         })
-//     }
-// })
-
 app.get('/randomTest', (req, res) => {
     if (!req.query.count) {
         return res.send('Error has been made')
