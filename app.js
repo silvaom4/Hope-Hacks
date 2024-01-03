@@ -32,17 +32,85 @@ app.get('/astronomyDay', async (req, res) => {
     }
 });
 
+// original
+// app.get('/astroTest', (req, res) => {
+//     if (!req.query.date) {
+//         return res.send('Error has been made')
+//     } else {
+//         astronomyData(req.query.date, (err, data) => {
+//             res.send(data)
+//         })
+//     }
+
+// })
+
+// 1st attempt too handle errors 
+
 app.get('/astroTest', (req, res) => {
     if (!req.query.date) {
         return res.send('Error has been made')
-    } else {
+    } 
         astronomyData(req.query.date, (err, data) => {
+            console.log(err, data)
+            if(err) {
+                
+                return res.send({err: err})
+                
+            }
             res.send(data)
         })
-    }
-
 
 })
+
+
+// app.get('/astroTest', (req, res) => {
+//     if (!req.query.date) {
+//         return res.send('Error has been made')
+//     } 
+//         astronomyData(req.query.date, (err, data) => {
+//             if(err) {
+                
+//                 res.send({err})
+                
+//             }
+//             res.send(data)
+//         })
+
+// })
+// app.get('/astroTest', (req, res) => {
+//     if (!req.query.date) {
+//         return res.send('Error has been made')
+//     } 
+
+// //     astronomyData(req.query.date).then(data => {
+// //         if(data) {
+// //             res.send(data)
+// //         } else {
+// //             return res.send({error: "Try again."})
+// //         }
+// //     })
+// // })
+
+    // astronomyData(req.query.date, (err, data) => {
+    //         if(data) {
+    //             res.send(data)
+    //         } else {
+    //             return res.send({error: "Try again."})
+    //         }
+    //     }
+        // astronomyData(req.query.date, (err, data) => {
+            
+        //         res.send(data)
+           
+        // })
+            //     if(err) {
+        //         return res.send({err})
+        //     }
+        //     res.send(data)
+        // })
+
+
+
 
 app.get('/date', (req, res) => {
     res.sendFile(path.join(__dirname, 'templates', 'date.html'))

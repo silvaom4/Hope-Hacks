@@ -21,13 +21,13 @@ dateForm.addEventListener('submit', (e) => {
 
     fetch('http://localhost:5000/astroTest?date='+ date).then((response) => {
         response.json().then((data) => {
-            if (data.error) {
-                datePara.textContent = data.error
+            if (data.err) {
+                datePara.textContent = data.err
             } else {
                  console.log(data);
             datePara.textContent = data.date 
             datePara2.textContent = data.title 
-            datePara3.textContent = data.bio + data.img
+            datePara3.textContent = data.bio
 
             datePara4.innerHTML = `<img src='${data.img}' alt='${data.title}'>`
             }

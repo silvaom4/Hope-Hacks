@@ -1,5 +1,8 @@
 //based on the date the user input ex (2023-12-21), gives you the info of that date aka
 // date, title, bio, img
+// for the date page
+
+
 
 const astronomyData = (date, callback ) => {
     const url = 'https://api.nasa.gov/planetary/apod?api_key=QOeP5NpXEklQLQfszDMeP3SXy72Y1iV8b5bAhe3G&date=' + date;
@@ -20,11 +23,14 @@ const astronomyData = (date, callback ) => {
                 bio: json.explanation,
                 img: json.url
             };
-
+            if(results.date==undefined){
+                return callback('Please enter a valid date', undefined)
+            }
             callback (undefined , results)
         })
-        .catch(err => {
-            throw new Error('Error with data')
-        })
+
 };
+
+
 module.exports = astronomyData;
+
