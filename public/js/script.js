@@ -36,9 +36,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data && data.collection && data.collection.items) { //This helps establish whether data collection and the collection items is the correct structure of the API
 
                 mediaList.innerHTML = ''; //clear existing content inside the div "medialist". Each time a new fetch is displayed it replaces the existing content 
+                 
+                const limit = 20;
+                console.log(data.collection.items)
 
-
-                data.collection.items.forEach( async (item) => { //Iterates through the data of the API
+                data.collection.items.slice(0, limit).forEach( async (item) => { //Iterates through the data of the API
                     const imageArray = item.href; // this handles what I want to get from the API
                     const media = await fetch(imageArray)
                      .then( res => res.json())
@@ -52,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         if(video) {
                             media['video']= video[0];
                         }
-                        console.log(media)
+                        // console.log(media)
                         return media
 
                      })
@@ -63,29 +65,29 @@ document.addEventListener('DOMContentLoaded', function() {
                     const resultDiv = document.createElement('div')
                     // resultDiv.classList.add('grid'); //This is creating a new div that will then have all of the elements I want to get from the api
                     if (media.image) {
-                            resultDiv.innerHTML = `
+                        mediaList.innerHTML += `
                             <div class = "exploreMain"> 
                                 <img src="${media.image}" alt="${title}"> 
-                                <p>${title}</p>
-                                <h5>${description}</h5>
+                                <p>${title}</p>  
                             </div>
                             `;
                         }
                     if (media.video) {
-                         resultDiv.innerHTML = ` 
+                         mediaList.innerHTML += ` 
                          <div class = "exploreMain">
                                 <video width="320" height="240" controls> <source src="${media.video}" type="video/mp4" alt="${title}"></video>
-                                <p>${title}</p>
-                                <h5>${description}</h5>
+                                <p>${title}</p>    
                         </div>
                             `;
                     }
 
                     
 
-                    mediaList.appendChild(resultDiv); //this line appends the resultDiv to the mediaList div. This adds a new div for each result to the HTML.
+                    // mediaList.appendChild(resultDiv); //this line appends the resultDiv to the mediaList div. This adds a new div for each result to the HTML.
 
                     
+                  
+
                 });
                 
             } else {
