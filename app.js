@@ -5,7 +5,7 @@ const path = require('path')
 const astronomyStatic = require('./src/utils/astronomyStatic')
 const astronomyRandom = require('./src/utils/astronomyRandom')
 const astronomyData = require('./src/utils/astronomyData')
-// const database = require('./database')
+const database = require('./database')
 
 const templatesPath = path.join(__dirname, 'templates')
 
@@ -49,16 +49,16 @@ app.get('/astronomyDay', async (req, res) => {
 app.get('/astroTest', (req, res) => {
     if (!req.query.date) {
         return res.send('Error has been made')
-    } 
-        astronomyData(req.query.date, (err, data) => {
-            console.log(err, data)
-            if(err) {
-                
-                return res.send({err: err})
-                
-            }
-            res.send(data)
-        })
+    }
+    astronomyData(req.query.date, (err, data) => {
+        console.log(err, data)
+        if (err) {
+
+            return res.send({ err: err })
+
+        }
+        res.send(data)
+    })
 
 })
 
@@ -77,8 +77,8 @@ app.get('/randomTest', (req, res) => {
     } else {
         astronomyRandom(req.query.count, (err, data) => {
             console.log(err, data)
-            if(err) {
-                return res.send({err: err})
+            if (err) {
+                return res.send({ err: err })
             }
             res.send(data)
         })
@@ -86,17 +86,17 @@ app.get('/randomTest', (req, res) => {
 })
 
 
-app.get('/count', (req,res) => {
+app.get('/count', (req, res) => {
 
     try {
-        res.sendFile(path.join(__dirname,'templates','random.html'))
+        res.sendFile(path.join(__dirname, 'templates', 'random.html'))
     }
     catch {
-         res.send('Error trying to connect') 
+        res.send('Error trying to connect')
     }
-       
-    
-    
+
+
+
 })
 
 
