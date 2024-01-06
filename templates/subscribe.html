@@ -6,65 +6,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subscribe</title>
     <link href="css/subscribe.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="Hope-Hacks-main/mostudio-master/css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="../mostudio-master/css/animate.css">
+
+    <link rel="stylesheet" href="../mostudio-master/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../mostudio-master/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../mostudio-master/css/magnific-popup.css">
+
+
+    <link rel="stylesheet" href="../mostudio-master/css/flaticon.css">
+    <link rel="stylesheet" href="../mostudio-master/css/style.css">
 </head>
 
 <body>
 
-    <section class="cont">
-        <form class="form sign-in" method="post" action="/login">
-            <h2>It's good to have you back traveler!</h2>
-            <label>
-                <span>username</span>
-                <input type="text" autocomplete="username" name="username" required />
-            </label>
-            <label>
-                <span>Password</span>
-                <input type="password" name="password" required />
-            </label>
-            <button type="submit" class="submit" value="login">Sign In</button>
-        </form>
+    <div id="colorlib-page">
+        <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+        <aside id="colorlib-aside" role="complementary" class="js-fullheight">
 
+            <h1 id="colorlib-logo" class="mb-4 mb-md-5"><a href="index.html"
+                    style="background-image: url(images/bg_1.jpg);">Mostudio</a></h1>
+            <nav id="colorlib-main-menu" role="navigation">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="explore">Explore</a></li>
+                    <li><a href="date">Date</a></li>
+                    <li><a href="count">Count</a></li>
+                    <li class="colorlib-active"><a href="subscribe">Subscribe</a></li>
+                </ul>
+            </nav>
 
-        <section class="sub-cont">
-            <section class="img">
-                <section class="img__text m--up">
-                    <h2>New here?</h2>
-                    <p>Sign up and discover amazing space details!</p>
-                </section>
-
-
-                <div class="img__text m--in">
-                    <h2>Fellow astronaut?</h2>
-                    <p>If you already have an account, just sign in. Welcome back to our Space Shuttle!</p>
+            <div class="colorlib-footer">
+                <div class="mb-4">
+                    <h3>Subscribe for newsletter</h3>
+                    <form action="#" class="colorlib-subscribe-form">
+                        <div class="form-group d-flex">
+                            <div class="icon"><span class="icon-paper-plane"></span></div>
+                            <input type="text" class="form-control" placeholder="Enter Email Address">
+                        </div>
+                    </form>
                 </div>
+                <p class="pfooter">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;
+                    <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is
+                    made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                        target="_blank">Colorlib.com</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+            </div>
+        </aside> <!-- END COLORLIB-ASIDE -->
+
+        <div class="row">
+            <div class="col-md-6 mx-auto p-0">
+                <div class="card">
+                    <div class="login-box">
+                        <div class="login-snip">
+                            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1"
+                                class="tab">Login</label>
+                            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2"
+                                class="tab">Sign
+                                Up</label>
+                            <div class="login-space">
+                                <form class="login" method="post" action="/login">
+                                    <div class="group">
+                                        <label for="user" class="label">Username</label>
+                                        <input id="user" type="text" class="input" placeholder="Enter your username"
+                                            name="username" required>
+                                    </div>
+                                    <div class="group">
+                                        <label for="pass" class="label">Password</label>
+                                        <input id="pass" type="password" class="input" placeholder="Enter your password"
+                                            name="password" required>
+                                    </div>
+
+                                    <div class="group">
+                                        <input type="submit" class="button" value="Sign In">
+                                    </div>
+                                    <div class="hr"></div>
+
+                                </form>
+                                <form class="sign-up-form" method="post" action="/newAccount">
+                                    <div class="group">
+                                        <label for="user" class="label">Username</label>
+                                        <input id="user" type="text" class="input" placeholder="Create your Username"
+                                            name="username" required>
+                                    </div>
+                                    <div class="group">
+                                        <label for="pass" class="label">Password</label>
+                                        <input id="pass" type="password" class="input" name="password"
+                                            placeholder="Create your password" required>
+                                    </div>
+
+                                    <div class="group">
+                                        <label for="pass" class="label">Email Address</label>
+                                        <input id="pass" type="text" class="input"
+                                            placeholder="Enter your email address" name="email" required>
+                                    </div>
+                                    <div class="group">
+                                        <input type="submit" class="button" value="Sign Up">
+                                    </div>
+                                    <div class="hr"></div>
+                                    <div class="foot">
+                                        <label for="tab-1">Already Member?</label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- END COLORLIB-PAGE -->
 
 
-                <section class="img__btn">
-                    <span class="m--up">Sign Up</span>
-                    <span class="m--in">Sign In</span>
-                </section>
-            </section>
 
 
-            <form class="form sign-up" method="post" action="/newAccount">
-                <h2>Join us on an adventure!</h2>
-                <label>
-                    <span>username</span>
-                    <input type="text" name="username" required />
-                </label>
-                <label>
-                    <span>Email</span>
-                    <input type="email" name="email" required />
-                </label>
-                <label>
-                    <span>Password</span>
-                    <input type="password" name="password" required />
-                </label>
-                <button type="submit" class="submit" value="newAccount">Sign Up</button>
-            </form>
-
-        </section>
-    </section>
+    <script src="../mostudio-master/js/jquery.min.js"></script>
+    <script src="../mostudio-master/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="../mostudio-master/js/popper.min.js"></script>
+    <script src="../mostudio-master/js/bootstrap.min.js"></script>
+    <script src="../mostudio-master/js/jquery.easing.1.3.js"></script>
+    <script src="../mostudio-master/js/jquery.waypoints.min.js"></script>
+    <script src="../mostudio-master/js/jquery.stellar.min.js"></script>
+    <script src="../mostudio-master/js/owl.carousel.min.js"></script>
+    <script src="../mostudio-master/js/jquery.magnific-popup.min.js"></script>
+    <script src="../mostudio-master/js/jquery.animateNumber.min.js"></script>
+    <script src="../mostudio-master/js/scrollax.min.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="js/google-map.js"></script>
+    <script src="js/main.js"></script>
 
     <script src="js/subscribe.js"></script>
 </body>
