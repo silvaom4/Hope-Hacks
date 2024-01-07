@@ -7,11 +7,11 @@ body {
 
 .login-box {
     width: 100%;
-    margin: auto;
-    max-width: 525px;
+    /* margin: auto;
+    max-width: 525px; */
     min-height: 670px;
     position: relative;
-    background: url('https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2022/12/carina_nebula_jets_nircam_narrowband_filters/24644532-1-eng-GB/Carina_Nebula_jets_NIRCam_narrowband_filters_pillars.jpg') no-repeat center;
+    background: url('https://www.shutterstock.com/image-illustration/3d-illustration-astronaut-earth-orbit-600nw-2132366653.jpg') no-repeat center;
     box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
 }
 
@@ -120,7 +120,7 @@ body {
     height: 2px;
     background: #fff;
     position: absolute;
-    transition: all .2s ease-in-out 0s;
+    transition: all .10s ease-in-out 0s;
 }
 
 .login-space .group label .icon:before {
@@ -135,6 +135,7 @@ body {
     right: 0;
     transform: scale(0) rotate(0);
 }
+
 
 .login-space .group .check:checked+label {
     color: #fff;
@@ -197,8 +198,43 @@ a {
 .card {
     width: 500px;
     left: 100px;
+    background-color: #111111 !important;
+    position: static !important;
 }
 
 ::placeholder {
     color: #fff;
+}
+
+.col-md-6.mx-auto.p-0 {
+    /* margin-left: 25vw !important; */
+    display: flex;
+    align-items: center;
+    height: 100vh
+}
+
+.row {
+    width: 70vw;
+    left: 50vw;
+    position: sticky;
+}
+
+@media screen and (max-width: 991px) {
+    .row {
+        width: 70vw;
+        left: 5vw;
+        position: sticky;
+    }
+
+    .login-box {
+        width: 60vw
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .row {
+        width: 70vw;
+        left: 20vw;
+        position: sticky;
+    }
 }
