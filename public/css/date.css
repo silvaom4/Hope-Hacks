@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.date-header {
+    padding: 50px;
+    border: solid red 1px;
+    margin-left: 30vw;
+}
+
+#date-input {
+    width: 200px;
+    padding: 2px;
+}
+
+#date-button {
+    padding: 2px;
+}
+
+#date-form {
+    padding: 20px;
+}
+
+
+#date-para{
+  
+}
+
+#date-para2{}
+
+#date-para3{}
+
+#date-para4{
+    
+}
+
+.date-screen-section {
+    display: flex;
+    flex-direction:row;
+    border: 1px lime solid;
+}
+
+
+.date-left-screen {
+    border: 1px orange solid;
+}
+
+.date-right-screen {
+    border: 1px solid blue;
+    padding: 10px;
+}
+
+.date-img {
+    padding: 10px;
+    height: 60vh;
+    width: 400px;
+}
+
+
+@media screen and (min-width: 692px) and (max-width: 991px) {
+    .date-header {
+        margin: 0 auto;
+    }
+
+    .date-img {
+        padding: 10px;
+        height: 60vh;
+        width: 50vw;
+    }
+}
+
+
+
+@media screen and (min-width: 401px) and (max-width: 691px) {
+   
+    .date-header {
+        margin: 0 auto;
+    }
+
+    .date-img {
+        padding: 10px;
+        height: 45vh;
+        width: 80vw;
+    } 
+    
+    .date-screen-section {
+        display: flex;
+        flex-direction:column;
+        border: 1px lime solid;
+    }
+
+}
+
+
+@media screen and (max-width: 400px) {
+    
+   
+    .date-header {
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .date-img {
+        padding: 10px;
+        height: 45vh;
+        width: 80vw;
+    }
+     .date-screen-section {
+        display: flex;
+        flex-direction:column;
+        border: 1px lime solid;
+    }
+
+
+}

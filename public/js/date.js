@@ -8,6 +8,7 @@ const datePara4 = document.getElementById('date-para4')
 
 
 
+
 // bug - date only goes to 1995-06-16
 
 dateForm.addEventListener('submit', (e) => {
@@ -29,7 +30,7 @@ dateForm.addEventListener('submit', (e) => {
             datePara2.textContent = data.title 
             datePara3.textContent = data.bio
 
-            datePara4.innerHTML = `<img src='${data.img}' alt='${data.title}'>`
+            datePara4.innerHTML = `<img class="date-img"src='${data.img}' alt='${data.title}'>`
             }
            
             
