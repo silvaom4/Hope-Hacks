@@ -1,5 +1,5 @@
-.intro,
-    #apod-container {
+.intro
+     {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -8,49 +8,43 @@
         margin: 0 auto; /* Center the container horizontally */
     }
 
-#apod-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-          }
-        
-          #apod-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-          }
-        
-          .apod-image {
-            position: relative;
-            display: inline-block;
-          }
-        
-          .image-wrapper {
-            width: 700px; /* Adjust the width of the container as desired */
-          }
-        
-          #apod-img {
-            width: 100%;
-            height: auto;
-          }
-        
-          #apod-bio {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: #fff;
-            padding: 10px;
-            margin: 0;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s;
-          }
-        
-          .apod-image:hover #apod-bio {
-            opacity: 1;
-            visibility: visible;
-          }
+    #apod-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end; 
+      height: 100%; 
+      padding: 20px; 
+    }
+  
+    .apod-image {
+      position: relative;
+      display: inline-block;
+    }
+  
+    .image-wrapper {
+      width: 35rem; 
+    }
+  
+    #apod-img {
+      width: 100%;
+      height: auto;
+    }
+  
+    #apod-bio {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      padding: 10px;
+      margin: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s;
+    }
+  
+    .apod-image:hover #apod-bio {
+      opacity: 1;
+      visibility: visible;
+    }
