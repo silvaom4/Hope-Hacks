@@ -34,16 +34,19 @@ randomForm.addEventListener('submit', (e) => {
                 container.appendChild(imgElement)
                // -date
                 let dateElement = document.createElement('p')
+                dateElement.className = 'random-date-class'
                 dateElement.textContent = data[i].date
                 container.appendChild(dateElement)
 
                 // -title
-                let titleElement = document.createElement('p')               
+                let titleElement = document.createElement('p')    
+                titleElement.className = 'random-title-class'   
                 titleElement.textContent = data[i].title
                 container.appendChild(titleElement)
 
                 // -bio
                 let bioElement = document.createElement('p')  
+                bioElement.className = 'random-bio-class'
                 bioElement.textContent = data[i].bio
                 container.appendChild(bioElement)
 
