@@ -1,0 +1,66 @@
+#myModal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+        background: rgba(0, 0, 0, 0.5);
+}
+
+
+.modal-content {
+    background: rgba(0, 0, 0, 0.9);
+    text-align: center;
+    position: absolute;
+    margin-left: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 50%;
+    height: 400px;
+    width: 200px; /* Adjust the width as needed */
+    border-radius: 10px;
+    padding: 3rem;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+    animation-name: modalopen;
+    animation-duration: var(--duration);
+}
+
+
+.modal-content h1 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: white; /* Set the text color to white */
+}
+
+.modal-content p {
+    font-size: 1rem;
+    margin-top: 1rem;
+    color: white; /* Set the text color to white */
+}
+
+.imagesection,
+.videosection {
+    display:flex;
+}
+.videoinfo h2,
+.videoinfo p
+.imageinfo h2,
+.imageinfo p {
+    color:black
+}
+
+@keyframes modalopen {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
