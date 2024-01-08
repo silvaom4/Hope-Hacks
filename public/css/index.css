@@ -54,3 +54,51 @@
     .intro h1, h2 {
       font-family: "Abril Fatface", cursive;
     }
+
+    @media screen and (min-width: 692px) and (max-width: 991px) {
+      .intro {
+        font-size: 18px;
+        max-width: 400px;
+      }
+    
+      .image-wrapper {
+        width: 25rem;
+      }
+    
+      #apod-bio {
+        bottom: 10px;
+        font-size: 16px;
+      }
+    }
+
+    @media screen and (min-width: 401px) and (max-width: 691px) {
+      .intro {
+        font-size: 14px;
+        max-width: 350px;
+      }
+    
+      .image-wrapper {
+        width: 20rem;
+      }
+    
+      #apod-bio {
+        bottom: 2px;
+        font-size: 12px;
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+      .intro {
+        font-size: 12px;
+        max-width: 300px;
+      }
+    
+      .image-wrapper {
+        width: 15rem;
+      }
+    
+      #apod-bio {
+        bottom: 0;
+        font-size: 10px;
+      }
+    }
