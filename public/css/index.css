@@ -1,19 +1,21 @@
 .intro
      {
+      
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
         max-width: 600px; /* Adjust the width as desired */
         margin: 0 auto; /* Center the container horizontally */
+        font-size: 20px;
     }
+   
 
     #apod-container {
       display: flex;
       flex-direction: column;
-      align-items: flex-end; 
-      height: 100%; 
-      padding: 20px; 
+      align-items: center;
+      text-align: center;
     }
   
     .apod-image {
@@ -22,7 +24,7 @@
     }
   
     .image-wrapper {
-      width: 35rem; 
+      width: 35rem; /* Adjust the width of the container as desired */
     }
   
     #apod-img {
@@ -47,4 +49,8 @@
     .apod-image:hover #apod-bio {
       opacity: 1;
       visibility: visible;
+    }
+
+    .intro h1, h2 {
+      font-family: "Abril Fatface", cursive;
     }
