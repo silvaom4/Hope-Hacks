@@ -6,6 +6,15 @@
 .date-header {
     padding: 50px;
     margin-left: 30vw;
+  
+}
+
+.date-title-header {
+      font-size: 20px;
+}
+
+.date-title-header h1 {
+    font-family: "Abril Fatface", cursive;
 }
 
 #date-form {

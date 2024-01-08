@@ -6,6 +6,15 @@
 .random-header {
     padding: 50px;
     margin-left: 30vw;
+    
+}
+
+.random-title-header {
+    font-size: 20px;
+}
+
+.random-tile-header h1 {
+    font-family: "Abril Fatface", cursive;
 }
 
 #random-form {
