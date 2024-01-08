@@ -8,6 +8,14 @@ const astronomyData = require('./src/utils/astronomyData')
 const database = require('./database')
 
 const templatesPath = path.join(__dirname, 'templates')
+const session = require('express-session');
+
+// Add middleware to server
+app.use(session({
+    secret: 'your-secret-key',
+    resave: true,
+    saveUninitialized: true
+}));
 
 
 
@@ -116,6 +124,15 @@ app.get('/subscribe', (req, res) => {
 
 })
 
+//created a new route in order to store the express session of a user from either the /login or /newAccount routes
+app.get('/getUsername', (req, res) => {
+    // Retrieve the username from the session
+    const username = req.session.username || null;
+
+    // Send the username as JSON so the front end can access it
+    res.json({ username: username });
+});
+
 
 //post is used to process data, we're using it to process the info in our form
 app.post('/login', (req, res) => {
@@ -139,18 +156,22 @@ app.post('/login', (req, res) => {
             if (data.length > 0) {
                 //now lets varify if password is correct 
                 if (data[0].password === userPassword) {
-                    //the user is directed the main page for now
+                    //the user is redirected the main page with their username showing
+                    req.session.username = username;
                     res.redirect('/')
                 } else {
-                    //user is directed where the form is if incorrect password
-                    res.redirect('/subscribe');
+                    //user is redirected where the form is if incorrect password and get an alert
+                    res.send('<script>alert("Wrong password"); window.location.href="/subscribe";</script>');
                 }
             } else {
-                //user is directed where the form is if incorrect username
-                res.redirect('/subscribe');
+                //user is redirected where the form is if incorrect username
+                res.send('<script>alert("Wrong username"); window.location.href="/subscribe";</script>');
             }
         })
 
+    } else {
+        // user is redirected to form and given an alert
+        res.send('<script>alert("Invalid username or password"); window.location.href="/subscribe";</script>');
     }
 })
 
@@ -174,7 +195,9 @@ app.post('/newAccount', (req, res) => {
             //if an error occurs, they get an errorcode and message
             return res.status(500).send('Internal Server Error');
         }
-        //if data goes through, the user is directed to main page for now
+        // Store the username in the session
+        req.session.username = username;
+        //if data goes through, the user is directed to main page with their username showing up
         res.redirect('/');
     });
 })
