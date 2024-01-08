@@ -5,8 +5,11 @@
 
 .date-header {
     padding: 50px;
-    border: solid red 1px;
     margin-left: 30vw;
+}
+
+#date-form {
+    padding: 20px;
 }
 
 #date-input {
@@ -18,36 +21,14 @@
     padding: 2px;
 }
 
-#date-form {
-    padding: 20px;
-}
-
-
-#date-para{
-  
-}
-
-#date-para2{}
-
-#date-para3{}
-
-#date-para4{
-    
-}
-
 .date-screen-section {
     display: flex;
     flex-direction:row;
-    border: 1px lime solid;
 }
 
 
-.date-left-screen {
-    border: 1px orange solid;
-}
 
 .date-right-screen {
-    border: 1px solid blue;
     padding: 10px;
 }
 
@@ -87,7 +68,7 @@
     .date-screen-section {
         display: flex;
         flex-direction:column;
-        border: 1px lime solid;
+   
     }
 
 }
@@ -110,7 +91,7 @@
      .date-screen-section {
         display: flex;
         flex-direction:column;
-        border: 1px lime solid;
+    
     }
 
 
