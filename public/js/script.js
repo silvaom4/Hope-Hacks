@@ -1,24 +1,139 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const imageGallery = document.querySelector('#imageForm');
     const searchMedia = document.querySelector('#user-input');
     const mediaList = document.querySelector('#mediaList');
+    const loadingMore = document.querySelector('#loadMore');
+    const mediaModal = document.getElementById('myModal');
+    const backButton = document.getElementById('back');
+    const modalContent = document.querySelector('.modal-content');
+    const loadMoreParent = document.querySelector('#loadMoreParent')
+    let limit = 20;
+    let data;
 
-
-    const fetchData = async (url, options) => { // async keyword means that this function is asynchronous and will continue running without blocking the Event Loop
+    const fetchData = async (url, options) => {
         try {
-          const response = await fetch(url, options);  // this waiting to get the value of the "fetch" and once it has that value it stores it i the response variable
-          const data = await response.json();
-          return data;
+            const response = await fetch(url, options);
+            const data = await response.json();
+            return data;
         } catch (error) {
-          console.error(error);
+            console.error(error);
         }
-      };
+    };
+    const addListener = () => {
+
+        const handleLoadMore = loadingMore.addEventListener('click', (e) => {
+            e.preventDefault();
+            limit += 20;
+            console.log('New limit:', limit);
+    
+            data.collection.items.slice(0, limit).forEach(async (item) => {
+                const imageArray = item.href;
+                const media = await fetch(imageArray)
+                    .then((res) => res.json())
+                    .then((data) => {
+                        const image = data.filter((link) => link.endsWith('small.jpg'));
+                        const video = data.filter((link) => link.endsWith('.mp4'));
+                        const media = {};
+                        if (image) {
+                            media['image'] = image[0];
+                        }
+                        if (video) {
+                            media['video'] = video[0];
+                        }
+                        return media;
+                    });
+    
+                const title = item.data[0].title;
+                const description = item.data[0].description;
+    
+                const resultDiv = document.createElement('div');
+    
+                if (media.image) {
+                    resultDiv.innerHTML = `
+                        <div class="exploreMain"> 
+                            <img src="${media.image}" alt="${title}"> 
+                            <p>${title}</p>  
+                        </div>
+                    `;
+                    mediaList.appendChild(resultDiv);
+                    clickElement(resultDiv, title, description, media);
+                }
+    
+                if (media.video) {
+                    resultDiv.innerHTML = `
+                        <div class="exploreMain">
+                            <video width="320" height="240" controls>
+                                <source src="${media.video}" type="video/mp4" alt="${title}">
+                            </video>
+                            <p>${title}</p>
+                        </div>
+                    `;
+                    mediaList.appendChild(resultDiv);
+                    clickElement(resultDiv, title, description, media);
+                    console.log('Im being clicked');
+                }
+                // loadMoreParent.innerHTML = `<button id=loadMore type="submit">Load More</button>`
+                // addListener();
+            });
+        });
+    }
+
+
+    function showImageModal(title, description, media) {   // Modal function that will display modal when triggered by the clickElement that was made
+        if (media.image) {
+            modalContent.innerHTML = `
+            <div class="imagesection">
+             <div class="imagerender">
+                <img src="${media.image}" alt="${title}" width="300px" height="200px">
+             </div>
+             <div class="imageinfo">
+                <h2>${title}</h2>
+                <p>${description}</p>
+             </div>
+            </div>
+                <button id="back" class="back btn">X</button>
+            `;
+            mediaModal.style.display = 'block';
+
+            const backButton = modalContent.querySelector('.back');
+            backButton.addEventListener('click', closeImageModal);
+        }
+        if (media.video) {
+            modalContent.innerHTML = `
+            <div class="videosection">
+             <div class="videorender">
+                <video width="320" height="240" controls>
+                    <source src="${media.video}" type="video/mp4" alt="${title}">
+                </video>
+             </div>
+             <div class="videoinfo">
+                <h2>${title}</h2>
+                <p>${description}</p>
+             </div>
+            </div>
+                <button id="back" class="back btn">X</button>
+            `;
+            mediaModal.style.display = 'block';
+
+            const backButton = modalContent.querySelector('.back');
+            backButton.addEventListener('click', closeImageModal);
+        }
+    }
+
+    function closeImageModal() {
+        mediaModal.style.display = 'none';
+    }
+
+    function clickElement(resultDiv, title, description, media) {
+        resultDiv.addEventListener('click', () => {
+            showImageModal(title, description, media);
+        });
+    }
 
     document.getElementById('imageForm').addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const searchedMedia = encodeURIComponent(searchMedia.value.trim()); // handle the user input and doesnt read any unnessary spaces when entering contact
-
+        const searchedMedia = encodeURIComponent(searchMedia.value.trim());
 
         try {
             const options = {
@@ -31,65 +146,67 @@ document.addEventListener('DOMContentLoaded', function() {
             const url = `https://images-api.nasa.gov/search?q=${searchedMedia}`;
             console.log(url);
 
-            const data = await fetchData(url, options);
+            data = await fetchData(url, options);
 
-            if (data && data.collection && data.collection.items) { //This helps establish whether data collection and the collection items is the correct structure of the API
+            if (data && data.collection && data.collection.items) {
+                mediaList.innerHTML = '';
 
-                mediaList.innerHTML = ''; //clear existing content inside the div "medialist". Each time a new fetch is displayed it replaces the existing content 
-                 
-                const limit = 20;
-                console.log(data.collection.items)
+                if (data && data.collection && data.collection.items.length === 0) {
+                    mediaList.innerHTML = `Sorry, there aren't any results for "${searchedMedia}". Please try another word.`;
+                }
 
-                data.collection.items.slice(0, limit).forEach( async (item) => { //Iterates through the data of the API
-                    const imageArray = item.href; // this handles what I want to get from the API
+                
+                console.log(data.collection.items);
+
+                data.collection.items.slice(0, limit).forEach(async (item) => {
+                    const imageArray = item.href;
                     const media = await fetch(imageArray)
-                     .then( res => res.json())
-                     .then( data => {
-                        const image = data.filter(link => link.endsWith('small.jpg'))  //the filter out smalljpg and video that will show on our frontend
-                        const video = data.filter(link => link.endsWith('.mp4'))
-                        const media = {};
-                        if(image){
-                            media['image']= image[0];
-                        } 
-                        if(video) {
-                            media['video']= video[0];
-                        }
-                        // console.log(media)
-                        return media
+                        .then((res) => res.json())
+                        .then((data) => {
+                            const image = data.filter((link) => link.endsWith('small.jpg'));
+                            const video = data.filter((link) => link.endsWith('.mp4'));
+                            const media = {};
+                            if (image) {
+                                media['image'] = image[0];
+                            }
+                            if (video) {
+                                media['video'] = video[0];
+                            }
+                            return media;
+                        });
 
-                     })
-                    // console.log(imageUrl)
                     const title = item.data[0].title;
                     const description = item.data[0].description;
 
-                    const resultDiv = document.createElement('div')
-                    // resultDiv.classList.add('grid'); //This is creating a new div that will then have all of the elements I want to get from the api
+                    const resultDiv = document.createElement('div');
+
                     if (media.image) {
-                        mediaList.innerHTML += `
-                            <div class = "exploreMain"> 
+                        resultDiv.innerHTML = `
+                            <div class="exploreMain"> 
                                 <img src="${media.image}" alt="${title}"> 
                                 <p>${title}</p>  
                             </div>
-                            `;
-                        }
-                    if (media.video) {
-                         mediaList.innerHTML += ` 
-                         <div class = "exploreMain">
-                                <video width="320" height="240" controls> <source src="${media.video}" type="video/mp4" alt="${title}"></video>
-                                <p>${title}</p>    
-                        </div>
-                            `;
+                        `;
+                        mediaList.appendChild(resultDiv);
+                        clickElement(resultDiv, title, description, media);
                     }
 
-                    
-
-                    // mediaList.appendChild(resultDiv); //this line appends the resultDiv to the mediaList div. This adds a new div for each result to the HTML.
-
-                    
-                  
-
+                    if (media.video) {
+                        resultDiv.innerHTML = `
+                            <div class="exploreMain">
+                                <video width="320" height="240" controls>
+                                    <source src="${media.video}" type="video/mp4" alt="${title}">
+                                </video>
+                                <p>${title}</p>
+                            </div>
+                        `;
+                        mediaList.appendChild(resultDiv);
+                        clickElement(resultDiv, title, description, media);
+                        console.log('Im being clicked');
+                    }
+                    loadMoreParent.innerHTML = `<button id=loadMore type="submit">Load More</button>`
+                    addListener();
                 });
-                
             } else {
                 console.error('Data structure is not as expected:', data);
             }
@@ -98,6 +215,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+
 
 
 
