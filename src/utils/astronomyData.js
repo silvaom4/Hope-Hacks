@@ -24,7 +24,7 @@ const astronomyData = (date, callback ) => {
                 img: json.url
             };
             if(results.date==undefined){
-                return callback('Please enter a valid date', undefined)
+                return callback('Please enter a date between 1995-06-16 and today (YYYY-MM-DD)', undefined)
             }
             callback (undefined , results)
         })
