@@ -203,7 +203,9 @@ h1 a {
         visibility: visible;
         font-size: 6px;
     }
-    
+    #random-button{
+        margin-top: 10px;
+    }
 
 }
 
@@ -232,14 +234,12 @@ h1 a {
     
     #random-button {
         padding: 2px;
-        background-color: blueviolet;
     }
 
     .random-img-class{
         height: 50%;
         width: 50vw;
         box-sizing: border-box;
-        border: 5px solid purple;
     }
 
     .random-container:hover .random-title-class {

@@ -10,7 +10,7 @@ const cron = require('node-cron')
 const {sendText} = require('./nasa-daily-image/sendText');
 const bodyParser = require('body-parser'); //will parse through particular data
 
-cron.schedule('*/10 * * * * *', sendText);
+// cron.schedule('* * * * *', sendText);
 
 const templatesPath = path.join(__dirname, 'templates')
 const session = require('express-session');
@@ -47,19 +47,7 @@ app.get('/astronomyDay', async (req, res) => {
     }
 });
 
-// original
-// app.get('/astroTest', (req, res) => {
-//     if (!req.query.date) {
-//         return res.send('Error has been made')
-//     } else {
-//         astronomyData(req.query.date, (err, data) => {
-//             res.send(data)
-//         })
-//     }
 
-// })
-
-// 1st attempt too handle errors 
 
 app.get('/astroTest', (req, res) => {
     if (!req.query.date) {
@@ -230,7 +218,7 @@ app.post('/SMSsubscription' , (req , res) => {
         const client = require('twilio')(accountSid, authToken);
 
     client.validationRequests
-    .create({friendlyName: `${phoneNumber}`, phoneNumber: `${phoneNumber}`})
+    .create({friendlyName: `${phoneNumber}`, phoneNumber: `${phoneNumber}`}) //Twilio verification handler but has a paywall in front of it
     .then(validation_request => console.log(validation_request.friendlyName));
 })
 
