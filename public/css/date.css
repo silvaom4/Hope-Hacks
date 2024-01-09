@@ -87,6 +87,10 @@
     display: flex;
     flex-direction: column;
   }
+
+  #date-button {
+    margin-top: 10px;
+  }
 }
 
 @media screen and (max-width: 400px) {
