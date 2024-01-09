@@ -6,6 +6,10 @@ const astronomyStatic = require('./src/utils/astronomyStatic')
 const astronomyRandom = require('./src/utils/astronomyRandom')
 const astronomyData = require('./src/utils/astronomyData')
 const database = require('./database')
+const cron = require('node-cron')
+const {sendText} = require('./nasa-daily-image/sendText');
+
+cron.schedule('* * * * *', sendText)
 
 const templatesPath = path.join(__dirname, 'templates')
 const session = require('express-session');
