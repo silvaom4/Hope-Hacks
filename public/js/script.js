@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
     const addListener = () => {
 
-        const handleLoadMore = loadingMore.addEventListener('click', (e) => {
+        const handleLoadMore = loadMore.addEventListener('click', (e) => {
             e.preventDefault();
             limit += 20;
             console.log('New limit:', limit);
@@ -72,8 +72,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     clickElement(resultDiv, title, description, media);
                     console.log('Im being clicked');
                 }
-                // loadMoreParent.innerHTML = `<button id=loadMore type="submit">Load More</button>`
-                // addListener();
+                loadMoreParent.innerHTML = `<button id=loadMore type="submit">Load More</button>`
+                addListener();
             });
         });
     }
@@ -187,6 +187,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <p>${title}</p>  
                             </div>
                         `;
+                        resultDiv.classList.add('mediaItem')
                         mediaList.appendChild(resultDiv);
                         clickElement(resultDiv, title, description, media);
                     }
@@ -200,6 +201,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <p>${title}</p>
                             </div>
                         `;
+                        resultDiv.classList.add('mediaItem')
                         mediaList.appendChild(resultDiv);
                         clickElement(resultDiv, title, description, media);
                         console.log('Im being clicked');
