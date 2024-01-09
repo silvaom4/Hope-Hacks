@@ -1,6 +1,6 @@
 .box {  
          margin-top: 200px;
-        /* margin-left: 30vw; */
+        margin-left: 30vw;
 
 }
 
@@ -104,4 +104,8 @@
                 margin: 0 auto;    
         }
     }
-
+    @media screen and (min-width: 401px) and (max-width: 691px) {
+        .random-header {
+            margin: 0 auto;
+        }
+}
