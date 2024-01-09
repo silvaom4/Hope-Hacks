@@ -1,6 +1,7 @@
 .box {  
-         margin-top: 200px;
+        margin-top: 200px;
         margin-left: 30vw;
+        padding: 50px;
 
 }
 
@@ -97,15 +98,29 @@
 
 
     @media screen and (min-width: 692px) and (max-width: 991px) {
-        .heading {
-            margin: 0 auto;
+        .main-header {
+                margin: 0 auto;
         }
+    
         .box {
                 margin: 0 auto;    
         }
     }
     @media screen and (min-width: 401px) and (max-width: 691px) {
-        .random-header {
-            margin: 0 auto;
+        .main-header {
+                margin: 0 auto;
+        }
+    
+        .box {
+                margin: 0 auto;    
+        }
+}
+@media screen and (max-width: 400px) {
+        .main-header {
+                margin: 0 auto;
+        }
+    
+        .box {
+                margin: 0 auto;    
         }
 }
