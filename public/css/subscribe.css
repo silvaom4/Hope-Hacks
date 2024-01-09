@@ -5,6 +5,8 @@ body {
     font: 600 16px/18px 'Open Sans', sans-serif;
 }
 
+
+
 .login-box {
     width: 100%;
     /* margin: auto;
@@ -217,6 +219,12 @@ a {
     width: 70vw;
     left: 50vw;
     position: sticky;
+}
+
+/* -- works  */
+#colorlib-aside #colorlib-logo a {
+    font-size: 50px;
+    font-family: "Abril Fatface", cursive;
 }
 
 @media screen and (max-width: 991px) {

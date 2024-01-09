@@ -1,8 +1,11 @@
 .box {  
          margin-top: 200px;
-        /* margin-left: 30vw; */
+        margin-left: 30vw;
 
 }
+
+
+
 #loadMoreParent {
         display: flex;
         align-items: center;
@@ -91,6 +94,8 @@
         background-color: #30456B; /* Darker green on hover */
     }
     
+
+
     @media screen and (min-width: 692px) and (max-width: 991px) {
         .heading {
             margin: 0 auto;
@@ -99,3 +104,8 @@
                 margin: 0 auto;    
         }
     }
+    @media screen and (min-width: 401px) and (max-width: 691px) {
+        .random-header {
+            margin: 0 auto;
+        }
+}
