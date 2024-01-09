@@ -1,6 +1,6 @@
 .box {  
-        margin-top: 200px;
-        margin-left: 53vw;
+         margin-top: 200px;
+        /* margin-left: 30vw; */
 
 }
 #loadMoreParent {
@@ -19,6 +19,17 @@
         left: 10px; 
         z-index: -1;
     } */
+.main-header {
+        margin-left: 30vw;
+        padding: 50px;
+}
+.heading h1 {      
+        font-family: "Abril Fatface", cursive;
+}
+.heading p {
+        font-size: 20px;
+        
+}
     
 #mediaList {
         display: flex;
@@ -33,7 +44,19 @@
         :first-child {
                 width: 100%;
         }
+        cursor:pointer;
 }
+
+.mediaItem {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .mediaItem:hover img,
+    .mediaItem:hover video {
+        transform: scale(1.03);
+        transition: transform 0.3s ease;
+    }
 
 #imageForm {
         display: flex;
@@ -53,17 +76,26 @@
         background-color: #555; /* Darker color on focus */
     }
     
-    button {
-        padding: 10px 20px;
+    #imageForm button {
+        padding: 12px 20px;
         border: none;
-        border-radius: 20px;
+        border-radius: 5px;
         background-color: #f3c623; 
         color: black;
         cursor: pointer;
         transition: background-color 0.3s;
+        margin-left: 5px;
     }
     
     button:hover {
-        background-color: #45a049; /* Darker green on hover */
+        background-color: #30456B; /* Darker green on hover */
     }
     
+    @media screen and (min-width: 692px) and (max-width: 991px) {
+        .heading {
+            margin: 0 auto;
+        }
+        .box {
+                margin: 0 auto;    
+        }
+    }
