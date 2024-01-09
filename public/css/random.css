@@ -13,23 +13,39 @@
     font-size: 20px;
 }
 
-.random-tile-header h1 {
+.random-title-header h1 {
     font-family: "Abril Fatface", cursive;
 }
 
-#random-form {
-    padding: 20px;
-}
 
-
-#random-input {
+/* #random-input {
     width: 200px;
     padding: 2px;
+} */
+
+#random-input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    width: 400px;
+    height: 50px;
 }
 
+
 #random-button {
-    padding: 2px;
-    background-color: blueviolet;
+    padding: 11px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f3c623; 
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 5px;
+}
+
+#random-button:hover {
+    background-color: #30456B; /* Darker green on hover */
 }
 
 #random-ul {
@@ -96,8 +112,29 @@
     visibility: hidden;
     
 }
+colorlib-aside a {
+    font-size: 100px;
+}
+
+/* -- works  */
+
+/* #colorlib-aside #colorlib-logo a {
+    font-size: 50px;
+    font-family: "Abril Fatface", cursive;
+}  */
+
+/* #colorlib-aside #colorlib-logo a {
+    font-size: 100px;
+} */
+/* #colorlib-aside #colorlib-logo a{
+    font-size: 90px;
+} 
 
 
+/* 
+h1 a {
+    font-size: 80px;
+} */
 
 
 @media screen and (min-width: 692px) and (max-width: 991px) {

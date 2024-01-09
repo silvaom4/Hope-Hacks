@@ -3,6 +3,9 @@
         /* margin-left: 30vw; */
 
 }
+
+
+
 #loadMoreParent {
         display: flex;
         align-items: center;
@@ -91,6 +94,8 @@
         background-color: #30456B; /* Darker green on hover */
     }
     
+
+
     @media screen and (min-width: 692px) and (max-width: 991px) {
         .heading {
             margin: 0 auto;
@@ -99,3 +104,4 @@
                 margin: 0 auto;    
         }
     }
+

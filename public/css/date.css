@@ -1,107 +1,108 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .date-header {
-    padding: 50px;
-    margin-left: 30vw;
-  
+  padding: 50px;
+  margin-left: 30vw;
 }
 
 .date-title-header {
-      font-size: 20px;
+  font-size: 20px;
 }
 
 .date-title-header h1 {
-    font-family: "Abril Fatface", cursive;
-}
-
-#date-form {
-    padding: 20px;
+  font-family: "Abril Fatface", cursive;
 }
 
 #date-input {
-    width: 200px;
-    padding: 2px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  width: 400px;
+  height: 50px;
 }
 
 #date-button {
-    padding: 2px;
+  padding: 11px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f3c623;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 3px;
 }
-
+#date-button:hover {
+  background-color: #30456b;
+}
 .date-screen-section {
-    display: flex;
-    flex-direction:row;
+  display: flex;
+  flex-direction: row;
 }
-
-
 
 .date-right-screen {
-    padding: 10px;
+  padding: 10px;
 }
 
 .date-img {
-    padding: 10px;
-    height: 60vh;
-    width: 400px;
+  padding: 10px;
+  height: 60vh;
+  width: 400px;
 }
 
+/* -- woorks */
+
+/* #colorlib-aside #colorlib-logo a {
+  font-size: 10px;
+  font-family: "Abril Fatface", cursive;
+} */
 
 @media screen and (min-width: 692px) and (max-width: 991px) {
-    .date-header {
-        margin: 0 auto;
-    }
+  .date-header {
+    margin: 0 auto;
+  }
 
-    .date-img {
-        padding: 10px;
-        height: 60vh;
-        width: 50vw;
-    }
+  .date-img {
+    padding: 10px;
+    height: 60vh;
+    width: 50vw;
+  }
 }
-
-
 
 @media screen and (min-width: 401px) and (max-width: 691px) {
-   
-    .date-header {
-        margin: 0 auto;
-    }
+  .date-header {
+    margin: 0 auto;
+  }
 
-    .date-img {
-        padding: 10px;
-        height: 45vh;
-        width: 80vw;
-    } 
-    
-    .date-screen-section {
-        display: flex;
-        flex-direction:column;
-   
-    }
+  .date-img {
+    padding: 10px;
+    height: 45vh;
+    width: 80vw;
+  }
 
+  .date-screen-section {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
-
 @media screen and (max-width: 400px) {
-    
-   
-    .date-header {
-        margin: 0 auto;
-        padding: 20px;
-        text-align: center;
-    }
+  .date-header {
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
 
-    .date-img {
-        padding: 10px;
-        height: 45vh;
-        width: 80vw;
-    }
-     .date-screen-section {
-        display: flex;
-        flex-direction:column;
-    
-    }
-
-
+  .date-img {
+    padding: 10px;
+    height: 45vh;
+    width: 80vw;
+  }
+  .date-screen-section {
+    display: flex;
+    flex-direction: column;
+  }
 }
