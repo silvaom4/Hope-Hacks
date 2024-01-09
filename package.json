@@ -17,6 +17,7 @@
     "express-session": "^1.17.3",
     "fetch": "^1.1.0",
     "mysql2": "^3.6.5",
+    "node": "^21.2.0",
     "node-cron": "^3.0.3",
     "twilio": "^5.0.0-rc.1"
   }

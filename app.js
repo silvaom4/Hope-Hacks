@@ -8,8 +8,9 @@ const astronomyData = require('./src/utils/astronomyData')
 const database = require('./database')
 const cron = require('node-cron')
 const {sendText} = require('./nasa-daily-image/sendText');
+const bodyParser = require('body-parser'); //will parse through particular data
 
-cron.schedule('* * * * *', sendText)
+cron.schedule('*/10 * * * * *', sendText);
 
 const templatesPath = path.join(__dirname, 'templates')
 const session = require('express-session');
@@ -28,6 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 //This is used to parse the incoming json data and puts in into the body of the req which
 //we can then access 
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
 //This will the home page where our astronomy api update will be on the home page 
@@ -206,6 +209,30 @@ app.post('/newAccount', (req, res) => {
     });
 })
 
+app.post('/SMSsubscription' , (req , res) => {
+    const phoneNumber = req.body.phoneNumber
+    console.log(phoneNumber);
+
+    const insertQuery = 'INSERT INTO subscriptions (phone_number) VALUES (?)';
+
+    database.query(insertQuery, [phoneNumber], (err, result) => {
+        if (err) {
+            //if an error occurs, they get an errorcode and message
+            return res.status(500).send('Internal Server Error');
+        }
+        // Store the username in the session
+        req.session.phoneNumber = phoneNumber;
+        //if data goes through, the user is directed to main page with their username showing up
+        res.redirect('/');
+    });
+        const accountSid = process.env.TWILIO_ACCOUNT_SID;
+        const authToken = process.env.TWILIO_AUTH_TOKEN;
+        const client = require('twilio')(accountSid, authToken);
+
+    client.validationRequests
+    .create({friendlyName: `${phoneNumber}`, phoneNumber: `${phoneNumber}`})
+    .then(validation_request => console.log(validation_request.friendlyName));
+})
 
 
 app.listen(port, (err) => {
