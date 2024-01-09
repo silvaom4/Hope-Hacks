@@ -3,6 +3,9 @@
         margin-left: 53vw;
 
 }
+
+
+
 #loadMoreParent {
         display: flex;
         align-items: center;
@@ -66,4 +69,9 @@
     button:hover {
         background-color: #45a049; /* Darker green on hover */
     }
+    
+    /* #colorlib-aside #colorlib-logo a {
+        font-size: 10px;
+        font-family: "Abril Fatface", cursive;
+    } */
     
